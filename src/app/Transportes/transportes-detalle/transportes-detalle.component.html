@@ -1,0 +1,75 @@
+<h1>{{title}}</h1>
+
+
+<div class="row text-right">
+<div class="col">
+  <button class="btn btn-outline-danger"
+  routerLink="/transportes">
+    <i class="fa fa-arrow-left"></i>
+    Regresar
+  </button>
+</div>
+</div>
+
+
+<div class="row animated fadeIn faster">
+<div class="col">
+
+  <form (ngSubmit)="guardar( f )"
+  #f="ngForm"
+  >
+    <div class="form-group">
+      <label for="">ID</label>
+      <input type="text" class="form-control"
+      [(ngModel)]="transporte.id"
+      name="id"
+      disabled="disabled"
+      placeholder="ID">
+      <small class="form-text text-muted">Este campo es autogenerado</small>
+    </div>
+
+
+    <div class="form-group">
+      <label for="">Tipo</label>
+      <input type="text"
+      class="form-control"
+      [(ngModel)]="transporte.Tipo"
+      name="Tipo"
+      placeholder="Tipo del transporte"
+      required
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Marca</label>
+      <input type="selec"
+      class="form-control"
+      [(ngModel)]="transporte.Marca"
+      name="Marca"
+      placeholder="Marca del transporte"
+      required
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Nombre</label>
+      <input type="text"
+      class="form-control"
+      [(ngModel)]="transporte.Nombre"
+      name="Nombre"
+      placeholder="Nombre del transporte"
+      required
+      >
+    </div>
+
+    <div class="form-group text-center">
+      <button
+      class="btn btn-outline-success">
+      <i class="fa fa-save" ></i>Guardar</button>
+
+    </div>
+
+  </form>
+
+</div>
+</div>

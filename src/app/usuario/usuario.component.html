@@ -1,0 +1,74 @@
+<h1>{{title}}</h1>
+
+
+<div class="row text-right">
+<div class="col">
+  <button class="btn btn-outline-danger"
+  routerLink="/usuarios">
+    <i class="fa fa-arrow-left"></i>
+    Regresar
+  </button>
+</div>
+</div>
+
+
+<div class="row animated fadeIn faster">
+<div class="col">
+
+  <form (ngSubmit)="guardar( f )"
+  #f="ngForm"
+  >
+    <div class="form-group">
+      <label for="">ID</label>
+      <input type="text" class="form-control"
+      [(ngModel)]="usuario.id"
+      name="id"
+      disabled="disabled"
+      placeholder="ID">
+      <small class="form-text text-muted">Este campo es autogenerado</small>
+    </div>
+
+    <div class="form-group">
+      <label for="">Username</label>
+      <input type="text"
+      class="form-control"
+      [(ngModel)]="usuario.username"
+      name="username"
+      placeholder="Username del usuario"
+      required
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Email</label>
+      <input type="email"
+      class="form-control"
+      [(ngModel)]="usuario.email"
+      name="email"
+      placeholder="Email"
+      required
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Password</label>
+      <input type="password"
+      class="form-control"
+      [(ngModel)]="usuario.password"
+      name="password"
+      placeholder="Password"
+      required
+      >
+    </div>
+
+    <div class="form-group text-center">
+      <button
+      class="btn btn-outline-success">
+      <i class="fa fa-save" ></i>Guardar</button>
+
+    </div>
+
+  </form>
+
+</div>
+</div>
