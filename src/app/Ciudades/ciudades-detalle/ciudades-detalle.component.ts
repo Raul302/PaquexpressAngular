@@ -23,12 +23,13 @@ export class CiudadesDetalleComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-
+    let idx: number;
     if (id != 'nuevo')
     {
+      idx = parseInt(id);
       // console.log('Edicion');
       this.title = 'Editando Ciudad';
-      this.ciudadservice.getCity( id )
+      this.ciudadservice.getCity( idx )
       .subscribe( (resp: any) => {
         this.ciudad = resp.Ciudades;
         console.log(this.ciudad);

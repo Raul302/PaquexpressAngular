@@ -24,6 +24,7 @@ export class VendedoresDetalleComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
+    let idx: number;
     this.vendedorservice.MostrarVendedores().subscribe(
       (resp: any) =>  {
       // console.log(resp);
@@ -32,9 +33,10 @@ export class VendedoresDetalleComponent implements OnInit {
     });
     if(id !='nuevo')
     {
+      idx = parseInt(id);
       // console.log('Edicion');
       this.title = 'Editando Vendedor';
-      this.vendedorservice.getVendedor( id )
+      this.vendedorservice.getVendedor( idx )
       .subscribe( (resp: any) => {
         this.vendedor = resp.Vendedor;
         console.log(this.vendedor);

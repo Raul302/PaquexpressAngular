@@ -33,4 +33,9 @@ export class CiudadesService {
   {
     return this.http.delete(environment.apiBaseURL + 'Ciudades/' + id);
   }
+  Clima(ciudad: string){
+    const token = '9d554c99a412f5744fc8fbdf51db3754';
+    return this.http.get(environment.apiClima + ciudad + '&appid=' + token);
+
+  }
 }

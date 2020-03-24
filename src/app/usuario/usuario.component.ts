@@ -25,12 +25,17 @@ export class UsuarioComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-
-    if(id !='nuevo')
+    let idx: number;
+    if ( id != 'nuevo')
+    {
+      idx = parseInt(id);
+    }
+    if(id != 'nuevo')
     {
       // console.log('Edicion');
       this.title = 'Editando Usuario';
-      this.usuarioService.getUsuario( id )
+
+      this.usuarioService.getUsuario( idx)
       .subscribe( (resp: any) => {
         this.usuario = resp.Usuario;
         console.log(this.usuario);

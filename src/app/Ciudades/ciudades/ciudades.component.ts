@@ -38,11 +38,24 @@ export class CiudadesComponent implements OnInit {
     if(resp.value)
     {
       this.ciudades.splice(i , 1);
-      console.log(ciudad.id);
+      // console.log(ciudad.id);
       this.ciudadservice.delCity(ciudad.id).subscribe();
     }
   });
 
  }
 
+ Consultarclima(ciudad:CiudadModel, city: string , id: number)
+ {
+  this.ciudadservice.Clima(city).subscribe( (resp:any) =>
+  {
+    // console.log(resp);
+    // console.log(this.ciudades[id]);
+    this.ciudades[id].clima = resp.weather[0].description;
+    let float: number;
+    float = (resp.main.temp - 273.15);
+
+    this.ciudades[id].temperatura = (parseFloat(float.toFixed(2)));
+  });
+ }
 }

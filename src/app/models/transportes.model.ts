@@ -1,6 +1,6 @@
 export class transporteModel {
   id: number;
-  tipo: string;
-  marca: string;
-  nombre: string;
+  Tipo: string;
+  Marca: string;
+  Nombre: string;
 }

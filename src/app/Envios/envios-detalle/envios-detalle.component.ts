@@ -31,6 +31,7 @@ export class EnviosDetalleComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
+    let idx: number;
     this.envioservice.MostrarEnvios().subscribe(
       (resp: any) =>  {
      this.productos = resp.productos,
@@ -41,8 +42,9 @@ export class EnviosDetalleComponent implements OnInit {
     if(id !='nuevo')
     {
       // console.log('Edicion');
+      idx = parseInt(id);
       this.title = 'Editando Envio';
-      this.envioservice.getEnvio( id )
+      this.envioservice.getEnvio( idx )
       .subscribe( (resp: any) => {
         this.envio = resp.Envio;
         console.log(this.envio);

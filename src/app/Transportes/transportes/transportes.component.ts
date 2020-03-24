@@ -30,7 +30,7 @@ export class TransportesComponent implements OnInit {
  {
   Swal.fire({
     title: '¿Esta seguro?',
-    text: 'Esta seguro que desea borrar a ' +  transporte.nombre ,
+    text: 'Esta seguro que desea borrar a ' +  transporte.Nombre ,
     icon: 'question',
     showConfirmButton:true,
     showCancelButton:true,

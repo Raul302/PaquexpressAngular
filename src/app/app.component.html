@@ -179,19 +179,58 @@
               <p>Transportes</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['productos']" routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact: true}" >
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fab fa-amazon"></i>
-              <p>Productos</p>
+              <p>
+                Productos
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">2</span>
+              </p>
             </a>
-          </li>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['categorias']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}" >
+                  <i class="nav-icon fa fa-list-alt"></i>
+                  <p>Categorias</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['productos']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}" >
+                  <i class="nav-icon fab fa-amazon"></i>
+                  <p>Productos</p>
+                </a>
+              </li>
+
+            </ul>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['vendedores']" routerLinkActive="active"
             [routerLinkActiveOptions]="{exact: true}" >
               <i class="nav-icon fa fa-chart-line"></i>
               <p>Vendedores</p>
             </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-book"></i>
+              <p>
+                Finanzas
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">1</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="pages/layout/top-nav.html" class="nav-link">
+                  <i class="nav-icon "></i>
+                  <p>Tipos de pago</p>
+                </a>
+              </li>
+
+            </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['envios']" routerLinkActive="active"

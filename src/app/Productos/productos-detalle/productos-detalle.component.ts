@@ -23,12 +23,14 @@ export class ProductosDetalleComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
+    let idx: number;
 
     if(id !='nuevo')
     {
+      idx = parseInt(id);
       // console.log('Edicion');
       this.title = 'Editando Producto';
-      this.productoservice.getProducto( id )
+      this.productoservice.getProducto( idx )
       .subscribe( (resp: any) => {
         this.producto = resp.Producto;
         console.log(this.producto);

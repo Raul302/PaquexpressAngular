@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiBaseURL: "http://localhost:3333/api/"
+  apiBaseURL: 'http://localhost:3333/api/',
+  apiClima: 'http://api.openweathermap.org/data/2.5/weather?q='
 };
 
 /*

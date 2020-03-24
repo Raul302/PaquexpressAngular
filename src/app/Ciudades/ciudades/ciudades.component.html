@@ -40,6 +40,7 @@
           <tr>
             <th>ID</th>
             <th>Nombre</th>
+            <th>Clima</th>
             <th>F. creacion </th>
             <th>Acciones </th>
           </tr>
@@ -48,7 +49,28 @@
           <tr *ngFor="let city of ciudades; let i = index">
             <td>{{city.id}}</td>
             <td>{{city.ciudad}}</td>
+            <td>
+            <div *ngIf="!city.clima; else Otro">
+              <button (click)="Consultarclima(city , city.ciudad , i)"
+              class="btn btn-outline-danger">
+              <i class="fa fa-sun" ></i></button>
+              </div>
+
+            <ng-template #Otro>
+              <div *ngIf="city.clima == 'clear sky'; else Otros">
+                <i class="fas fa-sun fa-2x" style="color: yellow"></i>
+                {{city.temperatura}} °C
+                </div>
+                <ng-template #Otros>
+                  <i class="fas fa-cloud fa-2x"></i>
+                  {{city.temperatura}} °C
+
+                </ng-template>
+            </ng-template>
+
+          </td>
             <td>{{city.created_at}}</td>
+
             <td>
               <button type="submit"
               class="btn btn-outline-info"
