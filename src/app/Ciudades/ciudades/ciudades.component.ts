@@ -19,7 +19,7 @@ export class CiudadesComponent implements OnInit {
   ngOnInit(): void {
   this.cargando = true;
   console.log('Componente montado');
-  this.ciudadservice.MostrarCiudades().subscribe( resp =>  {
+  this.ciudadservice.MostrarCiudades().subscribe( (resp:any) =>  {
     // console.log(resp);
     this.ciudades = resp;
     console.log(this.ciudades);

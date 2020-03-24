@@ -20,8 +20,7 @@ export class VendedoresDetalleComponent implements OnInit {
   productos: ProductosModel[] = [];
   title: string;
 
-  constructor(private vendedorservice: VendedoresService,
-    private route: ActivatedRoute) { }
+  constructor(private vendedorservice: VendedoresService,private route: ActivatedRoute) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -36,7 +35,7 @@ export class VendedoresDetalleComponent implements OnInit {
       // console.log('Edicion');
       this.title = 'Editando Vendedor';
       this.vendedorservice.getVendedor( id )
-      .subscribe( (resp: vendedorModel) => {
+      .subscribe( (resp: any) => {
         this.vendedor = resp.Vendedor;
         console.log(this.vendedor);
       });
@@ -72,8 +71,7 @@ export class VendedoresDetalleComponent implements OnInit {
     {
       console.log(this.vendedor.id_Producto);
       // Actualizar
-     this.vendedorservice.UpdateVendedor(this.vendedor)
-      .subscribe( resp => {
+      this.vendedorservice.UpdateVendedor(this.vendedor).subscribe( (resp: any) => {
         console.log(resp);
         this.vendedor = resp;
         this.showMessage(this.vendedor.Nombre,

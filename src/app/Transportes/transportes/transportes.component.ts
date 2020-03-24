@@ -19,7 +19,7 @@ export class TransportesComponent implements OnInit {
   ngOnInit(): void {
   this.cargando = true;
   console.log('Componente montado');
-  this.transporteservice.MostrarTransportes().subscribe( resp =>  {
+  this.transporteservice.MostrarTransportes().subscribe( (resp: any) =>  {
     // console.log(resp);
     this.transportes = resp;
     console.log(this.transportes);
@@ -30,7 +30,7 @@ export class TransportesComponent implements OnInit {
  {
   Swal.fire({
     title: '¿Esta seguro?',
-    text: 'Esta seguro que desea borrar a ' +  transporte.Nombre ,
+    text: 'Esta seguro que desea borrar a ' +  transporte.nombre ,
     icon: 'question',
     showConfirmButton:true,
     showCancelButton:true,

@@ -19,18 +19,17 @@ export class CiudadesDetalleComponent implements OnInit {
   ciudad = new CiudadModel();
   title: string;
 
-  constructor(private ciudadservice: CiudadesService,
-    private route: ActivatedRoute) { }
+  constructor(private ciudadservice: CiudadesService,private route: ActivatedRoute) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
 
-    if(id !='nuevo')
+    if (id != 'nuevo')
     {
       // console.log('Edicion');
       this.title = 'Editando Ciudad';
       this.ciudadservice.getCity( id )
-      .subscribe( (resp: CiudadModel) => {
+      .subscribe( (resp: any) => {
         this.ciudad = resp.Ciudades;
         console.log(this.ciudad);
       });
@@ -64,14 +63,13 @@ export class CiudadesDetalleComponent implements OnInit {
       console.log('Aqui va la ciudad');
       console.log(this.ciudad);
   // Actualizar
-  this.ciudadservice.UpdateCity(this.ciudad)
-  .subscribe( resp => {
-    console.log(resp);
-    this.ciudad = resp;
-    this.showMessage(this.ciudad.ciudad,
-      'Actualizado Correctamente',
-      'success');
-  });
+      this.ciudadservice.UpdateCity(this.ciudad).subscribe( (resp: any) => {
+      console.log(resp);
+      this.ciudad = resp;
+      this.showMessage(this.ciudad.ciudad,
+        'Actualizado Correctamente',
+        'success');
+      });
     }
     else
     {
@@ -92,13 +90,12 @@ export class CiudadesDetalleComponent implements OnInit {
   }
    showMessage(title , text , tipo)
    {
-     console.log(title,text,tipo);
-     let tipee = tipo;
+     console.log(title, text, tipo);
      Swal.fire({
-      title: title,
-      text:text,
+       title: title,
+       text: text,
       icon: tipo,
-      allowOutsideClick:false
+      allowOutsideClick: false
       });
    }
   }

@@ -30,7 +30,7 @@ export class TransportesDetalleComponent implements OnInit {
       // console.log('Edicion');
       this.title = 'Editando Transporte';
       this.transporteservice.getTRansporte( id )
-      .subscribe( (resp: transporteModel) => {
+      .subscribe( (resp: any) => {
         this.transporte = resp.Transporte;
         console.log(this.transporte);
       });
@@ -62,10 +62,10 @@ export class TransportesDetalleComponent implements OnInit {
     {
       // Actualizar
      this.transporteservice.UpdatedTransporte(this.transporte)
-      .subscribe( resp => {
+      .subscribe( (resp:any) => {
         console.log(resp);
         this.transporte = resp;
-        this.showMessage(this.transporte.Nombre,
+        this.showMessage(this.transporte.nombre,
           'Actualizado Correctamente',
           'success');
       });
@@ -75,17 +75,17 @@ export class TransportesDetalleComponent implements OnInit {
       console.log(this.transporte);
       // console.log(form);
           // console.log(this.usuario);
-          this.transporteservice.CrearTransporte(this.transporte).subscribe(resp => {
-            console.log(resp);
-            this.showMessage(this.transporte.Nombre,
-              'Creado Correctamente',
-              'success');
-          }, error =>{
-            console.log(error.error.message);
-            this.showMessage('Ocurrio un error',
-              error.error.message,
-              'error');
-          });
+      this.transporteservice.CrearTransporte(this.transporte).subscribe(resp => {
+              console.log(resp);
+              this.showMessage(this.transporte.nombre,
+                'Creado Correctamente',
+                'success');
+            }, error =>{
+              console.log(error.error.message);
+              this.showMessage('Ocurrio un error',
+                error.error.message,
+                'error');
+            });
     }
   }
    showMessage(title , text , tipo)

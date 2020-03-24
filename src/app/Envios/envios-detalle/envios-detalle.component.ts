@@ -27,8 +27,7 @@ export class EnviosDetalleComponent implements OnInit {
   ciudades: CiudadModel[] = [];
   title: string;
 
-  constructor(private envioservice: EnviosService,
-    private route: ActivatedRoute) { }
+  constructor(private envioservice: EnviosService,    private route: ActivatedRoute) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -44,7 +43,7 @@ export class EnviosDetalleComponent implements OnInit {
       // console.log('Edicion');
       this.title = 'Editando Envio';
       this.envioservice.getEnvio( id )
-      .subscribe( (resp: EnviosModel) => {
+      .subscribe( (resp: any) => {
         this.envio = resp.Envio;
         console.log(this.envio);
       });
@@ -98,10 +97,10 @@ export class EnviosDetalleComponent implements OnInit {
     {
       // Actualizar
      this.envioservice.updateEnvio(this.envio)
-      .subscribe( resp => {
+      .subscribe( (resp: any) => {
         console.log(resp);
         this.envio = resp;
-        this.showMessage(this.envio.Nombre,
+        this.showMessage(this.envio.id,
           'Actualizado Correctamente',
           'success');
       });
@@ -112,7 +111,7 @@ export class EnviosDetalleComponent implements OnInit {
           // console.log(this.usuario);
           this.envioservice.CrearEnvios(this.envio).subscribe(resp => {
             console.log(resp);
-            this.showMessage(this.envio.Nombre,
+            this.showMessage(this.envio.id,
               'Creado Correctamente',
               'success');
           }, error =>{

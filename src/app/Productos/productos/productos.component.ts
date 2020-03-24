@@ -20,7 +20,7 @@ export class ProductosComponent implements OnInit {
   ngOnInit(): void {
   this.cargando = true;
   console.log('Componente montado');
-  this.productosservice.MostrarProductos().subscribe( resp =>  {
+  this.productosservice.MostrarProductos().subscribe( (resp: any) =>  {
     // console.log(resp);
     this.productos = resp;
     console.log(this.productos);

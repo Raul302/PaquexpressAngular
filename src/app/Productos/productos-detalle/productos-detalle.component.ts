@@ -19,8 +19,7 @@ export class ProductosDetalleComponent implements OnInit {
   producto = new ProductosModel();
   title: string;
 
-  constructor(private productoservice: ProductosService,
-    private route: ActivatedRoute) { }
+  constructor(private productoservice: ProductosService,private route: ActivatedRoute) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -30,7 +29,7 @@ export class ProductosDetalleComponent implements OnInit {
       // console.log('Edicion');
       this.title = 'Editando Producto';
       this.productoservice.getProducto( id )
-      .subscribe( (resp: ProductosModel) => {
+      .subscribe( (resp: any) => {
         this.producto = resp.Producto;
         console.log(this.producto);
       });
@@ -62,7 +61,7 @@ export class ProductosDetalleComponent implements OnInit {
     {
       // Actualizar
      this.productoservice.UpdateProducto(this.producto)
-      .subscribe( resp => {
+      .subscribe( (resp: any) => {
         console.log(resp);
         this.producto = resp;
         this.showMessage(this.producto.Nombre,
