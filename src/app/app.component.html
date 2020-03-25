@@ -21,13 +21,23 @@
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item active">
 
-        <a *ngIf="!user" class="nav-link btn btn-primary" routerLink="/login">Login<span
+        <div *ngIf="!user;else Otro">
+          <a class="nav-link btn btn-primary" routerLink="/login">Login<span
             class="sr-only">(current)</span></a>
-        <a *ngIf="loggedIn" class="btn btn-primary text-white" (click)="signOut()">Logout Google</a>
-        <a *ngIf="auth0.userProfile$ | async as profile" class="btn btn-primary text-white"
+        </div>
+        <ng-template #Otro>
+
+        </ng-template>
+        <div *ngIf="auth0.userProfile$ | async as profile;else Otros">
+          <a class="btn btn-primary text-white"
           (click)="auth0.logout()">Logout Auth0</a>
+        </div>
+        <ng-template #Otros>
+          <li><a *ngIf="auth.isloggedin()" class="btn btn-primary text-white" (click)="logout()">Cerrar Sesion</a></li>
+        </ng-template>
+
+
       </li>
-      <li><a *ngIf="auth.isloggedin()" class="btn btn-primary text-white" (click)="logout()">Cerrar Sesion</a></li>
     </ul>
   </nav>
   <!-- /.navbar -->
