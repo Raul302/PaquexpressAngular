@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { transporteModel } from 'src/app/models/transportes.model';
 import { TransportesService } from 'src/app/services/transportes.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
@@ -19,7 +19,8 @@ export class TransportesDetalleComponent implements OnInit {
   transporte = new transporteModel();
   title: string;
 
-  constructor(private transporteservice: TransportesService,
+  constructor(private router: Router,
+    private transporteservice: TransportesService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -71,6 +72,7 @@ export class TransportesDetalleComponent implements OnInit {
         this.showMessage(this.transporte.Nombre,
           'Actualizado Correctamente',
           'success');
+          this.router.navigate(['transportes']);
       });
     }
     else
@@ -83,6 +85,8 @@ export class TransportesDetalleComponent implements OnInit {
               this.showMessage(this.transporte.Nombre,
                 'Creado Correctamente',
                 'success');
+                this.router.navigate(['transportes']);
+
             }, error =>{
               console.log(error.error.message);
               this.showMessage('Ocurrio un error',

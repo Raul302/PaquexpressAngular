@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaModel } from '../models/categoria.model';
 import { CategoriasService } from '../services/categorias.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForOf } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -20,7 +20,9 @@ export class CategoriasDetalleComponent implements OnInit {
   categoria = new CategoriaModel();
   title: string;
 
-  constructor(private categoriaservice: CategoriasService,private route: ActivatedRoute) { }
+  constructor(
+    private router: Router,
+    private categoriaservice: CategoriasService,private route: ActivatedRoute) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -75,6 +77,8 @@ export class CategoriasDetalleComponent implements OnInit {
       this.showMessage(this.categoria.Nombre,
         'Actualizado Correctamente',
         'success');
+        this.router.navigate(["/categorias"]);
+
       });
     }
     else
@@ -87,7 +91,8 @@ export class CategoriasDetalleComponent implements OnInit {
             this.showMessage(this.categoria.Nombre,
               'Creada Correctamente',
               'success');
-          }, error =>{
+              this.router.navigate(["/categorias"]);
+                      }, error =>{
             console.log(error.error.message);
             this.showMessage('Ocurrio un error',
               error.error.message,

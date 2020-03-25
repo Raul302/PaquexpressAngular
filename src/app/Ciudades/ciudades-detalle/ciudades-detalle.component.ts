@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CiudadModel } from 'src/app/models/ciudades.model';
 import { CiudadesService } from 'src/app/services/ciudades.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
@@ -19,7 +19,9 @@ export class CiudadesDetalleComponent implements OnInit {
   ciudad = new CiudadModel();
   title: string;
 
-  constructor(private ciudadservice: CiudadesService,private route: ActivatedRoute) { }
+  constructor(
+    private router: Router ,
+    private ciudadservice: CiudadesService,private route: ActivatedRoute) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -74,6 +76,8 @@ export class CiudadesDetalleComponent implements OnInit {
       this.showMessage(this.ciudad.ciudad,
         'Actualizado Correctamente',
         'success');
+        this.router.navigate(["/ciudades"]);
+
       });
     }
     else
@@ -85,6 +89,8 @@ export class CiudadesDetalleComponent implements OnInit {
             this.showMessage(this.ciudad.ciudad,
               'Creada Correctamente',
               'success');
+              this.router.navigate(["/ciudades"]);
+
           }, error =>{
             console.log(error.error.message);
             this.showMessage('Ocurrio un error',
