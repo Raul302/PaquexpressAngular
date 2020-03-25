@@ -3,6 +3,7 @@ import { AuthService } from 'angularx-social-login';
 import { SocialUser } from 'angularx-social-login';
 import { Router } from '@angular/router';
 import { Auth0Service } from './services/auth0.service';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,8 @@ export class AppComponent {
     private authService: AuthService,
     private router: Router,
     public auth0: Auth0Service,
+    public auth: AuthenticationService,
+    private route: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,5 +32,8 @@ export class AppComponent {
   signOut(): void {
     this.authService.signOut();
   }
-
+  logout() {
+    this.auth.logout();
+    this.route.navigate(['/login']);
+  }
 }

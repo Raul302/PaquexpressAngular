@@ -1,18 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginComponent } from 'src/app/login/login.component';
+import { User } from '../login/login.component';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { AuthService } from 'angularx-social-login';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-
   token: string;
-  constructor(private http: HttpClient) { this.readToken(); }
+  constructor(private http: HttpClient, private auth: AuthService, private route: Router) {
+    this.readToken();
+    this.auth.authState.subscribe(user => {
+      if (user) {
+        this.token = user.authToken;
+        localStorage.setItem('token', this.token);
+        this.route.navigate(['/']);
+      }
+    });
+  }
 
-  login(data: LoginComponent) {
+  login(data: User) {
     return this.http.post(environment.apiBaseURL + 'iniciar', data).pipe(
       map(respuesta => {
         this.token = respuesta['token'];
@@ -21,12 +31,10 @@ export class AuthenticationService {
     );
   }
 
-  register(data: any) {
-    return this.http.post(environment.apiBaseURL + 'api/v1/register', data);
-  }
-
   logout() {
-    localStorage.removeItem('token');
+    this.token = '';
+    window.localStorage.removeItem('token');
+    this.route.navigateByUrl('/');
   }
 
   isloggedin() {
@@ -41,4 +49,5 @@ export class AuthenticationService {
     }
     return this.token;
   }
+
 }

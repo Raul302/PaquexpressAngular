@@ -27,6 +27,7 @@
         <a *ngIf="auth0.userProfile$ | async as profile" class="btn btn-primary text-white"
           (click)="auth0.logout()">Logout Auth0</a>
       </li>
+      <li><a *ngIf="auth.isloggedin()" class="btn btn-primary text-white" (click)="logout()">Cerrar Sesion</a></li>
     </ul>
   </nav>
   <!-- /.navbar -->

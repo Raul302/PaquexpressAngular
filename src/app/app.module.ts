@@ -70,7 +70,8 @@ export function provideConfig() {
     FormsModule,
     HttpClientModule,
     CategoriasModule,
-    CategoriasDetalleModule
+    CategoriasDetalleModule,
+    ReactiveFormsModule
   ],
   providers: [{
     provide: AuthServiceConfig,

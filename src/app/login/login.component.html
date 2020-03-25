@@ -17,17 +17,23 @@
           <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
 
-
-            <form class="user">
+            <form [formGroup]="forma" class="user">
               <div class="form-group">
-                <input type="email" class="form-control form-control-user" id="inputEmail" aria-describedby="emailHelp"
-                  placeholder="Email">
+                <input type="text" class="form-control" name="username" placeholder="Correo" formControlName="email">
+              </div>
+              <div *ngIf="!forma.controls['email'].valid && forma.controls['email'].touched" class="invalid-feedback">
+                El correo es necesario.
               </div>
               <div class="form-group">
-                <input type="password" class="form-control form-control-user" id="inputPassword" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Contraseña"
+                  formControlName="password">
+              </div>
+              <div *ngIf="!forma.controls['password'].valid && forma.controls['password'].touched"
+                class="invalid-feedback">
+                La contraseña es necesaria.
               </div>
               <!-- falta accion de login -->
-              <input value="Login" type="submit" class="btn btn-dark bg-darkgray btn-user btn-block">
+              <input (click)="login()" value="Login" type="submit" class="btn btn-dark bg-darkgray btn-user btn-block">
 
               <hr>
             </form>
