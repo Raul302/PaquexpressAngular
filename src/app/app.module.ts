@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SocialLoginModule, AuthServiceConfig, LoginOpt } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -24,7 +26,18 @@ import { TipoEnviosComponent } from './tipo-envios/tipo-envios.component';
 import { TipoEnviosDetalleComponent } from './tipo-envios-detalle/tipo-envios-detalle.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { CategoriasDetalleComponent } from './categorias-detalle/categorias-detalle.component';
+import { LoginComponent } from './login/login.component';
 
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('754026727561-p3lr98t7rgrj6mttae4du8c0g5lma2rg.apps.googleusercontent.com')
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,15 +58,20 @@ import { CategoriasDetalleComponent } from './categorias-detalle/categorias-deta
     TipoEnviosComponent,
     TipoEnviosDetalleComponent,
     CategoriasComponent,
-    CategoriasDetalleComponent
+    CategoriasDetalleComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SocialLoginModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: AuthServiceConfig,
+    useFactory: provideConfig,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
