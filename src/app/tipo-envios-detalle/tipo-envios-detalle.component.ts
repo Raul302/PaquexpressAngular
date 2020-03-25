@@ -1,25 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { CiudadModel } from 'src/app/models/ciudades.model';
-import { CiudadesService } from 'src/app/services/ciudades.service';
+import { TipoEnvioModel } from '../models/TipoEnvio.model';
+import { TipoenvioService } from '../services/tipoenvio.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-ciudades-detalle',
-  templateUrl: './ciudades-detalle.component.html',
-  styleUrls: ['./ciudades-detalle.component.css']
+  selector: 'app-tipo-envios-detalle',
+  templateUrl: './tipo-envios-detalle.component.html',
+  styleUrls: ['./tipo-envios-detalle.component.css']
 })
-export class CiudadesDetalleComponent implements OnInit {
-
-  // redundante
+export class TipoEnviosDetalleComponent implements OnInit {
+// redundante
   // usuario : UsuarioModel = new UsuarioModel();
 
-  ciudad = new CiudadModel();
+  tenvios = new TipoEnvioModel();
   title: string;
 
-  constructor(private ciudadservice: CiudadesService,private route: ActivatedRoute) { }
+  constructor(private tenvioservice: TipoenvioService,private route: ActivatedRoute) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -28,17 +27,17 @@ export class CiudadesDetalleComponent implements OnInit {
     {
       idx = parseInt(id);
       // console.log('Edicion');
-      this.title = 'Editando Ciudad';
-      this.ciudadservice.getCity( idx )
+      this.title = 'Editando Tipo de envio';
+      this.tenvioservice.getEnvios( idx )
       .subscribe( (resp: any) => {
-        this.ciudad = resp.Ciudades;
-        console.log(this.ciudad);
+        this.tenvios = resp.TipoEnvio;
+        console.log(this.tenvios);
       });
     }
     else
     {
       // console.log('Nuevo');
-      this.title ='Creando Ciudad';
+      this.title ='Creando tipo de envio';
 
     }
   }
@@ -52,7 +51,8 @@ export class CiudadesDetalleComponent implements OnInit {
         text: 'Por favor ingrese informacion valida',
         icon: 'info',
         allowOutsideClick:false
-        });      return;
+        });
+      return;
     }
     Swal.fire({
     title: 'Espere',
@@ -63,15 +63,15 @@ export class CiudadesDetalleComponent implements OnInit {
     Swal.showLoading();
     let peticion: Observable<any>;
   // end guardar
-    if( this.ciudad.id)
+    if( this.tenvios.id)
     {
       console.log('Aqui va la ciudad');
-      console.log(this.ciudad);
+      console.log(this.tenvios);
   // Actualizar
-      this.ciudadservice.UpdateCity(this.ciudad).subscribe( (resp: any) => {
+      this.tenvioservice.UpdateEnvios(this.tenvios).subscribe( (resp: any) => {
       console.log(resp);
-      this.ciudad = resp;
-      this.showMessage(this.ciudad.ciudad,
+      this.tenvios = resp;
+      this.showMessage(this.tenvios.Nombre,
         'Actualizado Correctamente',
         'success');
       });
@@ -80,9 +80,9 @@ export class CiudadesDetalleComponent implements OnInit {
     {
       // console.log(form);
           // console.log(this.usuario);
-          this.ciudadservice.CrearCiudad(this.ciudad).subscribe(resp => {
+          this.tenvioservice.CrearTEnvios(this.tenvios).subscribe(resp => {
             console.log(resp);
-            this.showMessage(this.ciudad.ciudad,
+            this.showMessage(this.tenvios.Nombre,
               'Creada Correctamente',
               'success');
           }, error =>{

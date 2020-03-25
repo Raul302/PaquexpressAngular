@@ -30,7 +30,7 @@ export class EnviosComponent implements OnInit {
   console.log('Componente montado');
   this.envioservice.MostrarEnvios().subscribe(
     (resp: any) =>  {
-    // console.log(resp);
+    console.log(resp);
     this.producto = resp.productos;
     this.envios = resp.envios ;
     this.transporte = resp.transportes;

@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { EnviosModel } from 'src/app/models/envios.model';
 import { ProductosModel } from 'src/app/models/productos.model';
 import { EnviosService } from 'src/app/services/envios.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { transporteModel } from 'src/app/models/transportes.model';
 import { vendedorModel } from 'src/app/models/vendedores.model';
 import { CiudadModel } from 'src/app/models/ciudades.model';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
+import { TipoEnvioModel } from 'src/app/models/TipoEnvio.model';
 
 @Component({
   selector: 'app-envios-detalle',
@@ -25,9 +26,10 @@ export class EnviosDetalleComponent implements OnInit {
   transportes: transporteModel[] = [];
   vendedores: vendedorModel[] = [];
   ciudades: CiudadModel[] = [];
+  tenvios: TipoEnvioModel[] = [];
   title: string;
 
-  constructor(private envioservice: EnviosService,    private route: ActivatedRoute) { }
+  constructor(private envioservice: EnviosService,    private route: ActivatedRoute , private router: Router) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -38,6 +40,8 @@ export class EnviosDetalleComponent implements OnInit {
      this.transportes = resp.transportes;
      this.ciudades = resp.ciudades;
      this.vendedores = resp.vendedores;
+     this.tenvios = resp.tenvios;
+     console.log(this.envio);
     });
     if(id !='nuevo')
     {
@@ -47,7 +51,6 @@ export class EnviosDetalleComponent implements OnInit {
       this.envioservice.getEnvio( idx )
       .subscribe( (resp: any) => {
         this.envio = resp.Envio;
-        console.log(this.envio);
       });
     }
     else
@@ -60,7 +63,6 @@ export class EnviosDetalleComponent implements OnInit {
   onChange(newValue, tipo: number) {
     // console.log(newValue);
     // this.envio.id_Producto = newValue;
-    console.log(tipo);
 
     switch ( tipo )
     {
@@ -76,15 +78,21 @@ export class EnviosDetalleComponent implements OnInit {
             case 3:
               this.envio.id_Producto = newValue;
               break;
+              case 4:
+                this.envio.id_TipoEnvio = newValue;
+              break;
     }
 }
   guardar(form: NgForm)
   {
-    console.log(this.envio);
 
     if ( form.invalid ) {
-      console.log('Formulario no válido');
-      return;
+      Swal.fire({
+        title: 'Formulario invalido',
+        text: 'Por favor ingrese informacion valida',
+        icon: 'info',
+        allowOutsideClick:false
+        });      return;
     }
     Swal.fire({
     title: 'Espere',
@@ -100,24 +108,24 @@ export class EnviosDetalleComponent implements OnInit {
       // Actualizar
      this.envioservice.updateEnvio(this.envio)
       .subscribe( (resp: any) => {
-        console.log(resp);
         this.envio = resp;
         this.showMessage(this.envio.id,
           'Actualizado Correctamente',
           'success');
       });
+          this.router.navigate(['/envios']);
     }
     else
     {
       // console.log(form);
           // console.log(this.usuario);
           this.envioservice.CrearEnvios(this.envio).subscribe(resp => {
-            console.log(resp);
             this.showMessage(this.envio.id,
               'Creado Correctamente',
               'success');
+                        // this.router.navigate(['/envios']);
+
           }, error =>{
-            console.log(error.error.message);
             this.showMessage('Ocurrio un error',
               error.error.message,
               'error');
@@ -126,7 +134,6 @@ export class EnviosDetalleComponent implements OnInit {
   }
    showMessage(title , text , tipo)
    {
-     console.log(title,text,tipo);
      let tipee = tipo;
      Swal.fire({
       title: title,
