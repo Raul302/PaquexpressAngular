@@ -47,7 +47,8 @@ export class ProductosDetalleComponent implements OnInit {
   {
 
     if ( form.invalid ) {
-      console.log('Formulario no válido');
+      this.showMessage('Formulario no valido',
+      'Datos faltantes o no validos','info');
       return;
     }
     Swal.fire({
