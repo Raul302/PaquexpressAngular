@@ -14,6 +14,10 @@ import { VendedoresComponent } from './Vendedores/vendedores/vendedores.componen
 import { VendedoresDetalleComponent } from './Vendedores/vendedores-detalle/vendedores-detalle.component';
 import { ProductosDetalleComponent } from './Productos/productos-detalle/productos-detalle.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { CategoriasDetalleComponent } from './categorias-detalle/categorias-detalle.component';
+import { TipoEnviosComponent } from './tipo-envios/tipo-envios.component';
+import { TipoEnviosDetalleComponent } from './tipo-envios-detalle/tipo-envios-detalle.component';
 
 
 const routes: Routes = [
@@ -35,6 +39,12 @@ const routes: Routes = [
 
   {path:'vendedores',component:VendedoresComponent},
   {path:'vendedores/:id',component:VendedoresDetalleComponent},
+
+  {path:'categorias',component:CategoriasComponent},
+  {path:'categorias/:id',component:CategoriasDetalleComponent},
+
+  {path:'TiposEnvio',component:TipoEnviosComponent},
+  {path:'TiposEnvio/:id',component:TipoEnviosDetalleComponent},
 
   {path: '**', component: NotfoundComponent}
 ];

@@ -2,14 +2,13 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark"><i class="fa fa-ship"></i>Envios</h1>
+        <h1 class="m-0 text-dark"><i class="fa fa-list-alt"></i>Categorias</h1>
 
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a [routerLink]="['/']" routerLinkActive="active"
-              [routerLinkActiveOptions]="{exact: true}">Home</a></li>
-          <li class="breadcrumb-item active">Envios</li>
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Categorias</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -20,8 +19,8 @@
 <div class="col-12">
   <div class="card">
     <div class="card-header">
-      <button routerLink="/envios/nuevo" class="btn btn-success"><i class="fa fa-plus"></i> <i class="fa fa-ship"></i>
-      </button>
+      <button  routerLink="/categorias/nuevo"
+      class="btn btn-success"><i class="fa fa-plus"></i> <i class="fa fa-list-alt"></i> </button>
       <div class="card-tools">
         <div class="input-group input-group-sm" style="width: 150px;">
           <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -34,40 +33,38 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive p-0">
-      <table *ngIf="!cargando && envios.length > 0"
-        class="table table-hover animated fadeIn faster animated fadeIn faster ">
+      <table
+      *ngIf="!cargando && categorias.length > 0"
+      class="table table-hover animated fadeIn faster animated fadeIn faster ">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Vendedor</th>
-            <th>Producto</th>
-            <th>Transporte</th>
-            <th>Ciudad</th>
-            <th>Tipo de Envio</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
             <th>F. creacion </th>
             <th>Acciones </th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let envio of envios; let i = index">
-            <td>{{envio.id}}</td>
-            <td>{{envio.id_Vendedor}}</td>
-            <td>{{envio.id_Producto}}</td>
-            <td>{{envio.id_transporte}}</td>
-            <td>{{envio.id_Ciudad}}</td>
-            <td>{{envio.id_TipoEnvio}}</td>
-            <td>{{envio.created_at}}</td>
+          <tr *ngFor="let categoria of categorias; let i = index">
+            <td>{{categoria.id}}</td>
+            <td>{{categoria.Nombre}}</td>
+            <td>{{categoria.Descripcion}}</td>
+            <td>{{categoria.created_at}}</td>
             <td>
-              <button type="submit" class="btn btn-outline-info" [routerLink]="['/envios',envio.id]">
-                <i class="fa fa-edit"></i>Editar</button>
-              <button (click)="borrarEnvios(envio , i)" class="btn btn-outline-danger">
-                <i class="fa fa-trash"></i>Borrar</button>
+              <button type="submit"
+              class="btn btn-outline-info"
+              [routerLink]="['/categorias',categoria.id]">
+              <i class="fa fa-edit" ></i>Editar</button>
+              <button (click)="borrarCategoria(categoria , i)"
+              class="btn btn-outline-danger">
+              <i class="fa fa-trash" ></i>Borrar</button>
             </td>
           </tr>
         </tbody>
       </table>
 
-      <div *ngIf="!cargando && envios.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+      <div *ngIf="!cargando && categorias.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
         <h4 class="alert-heading">No hay registros</h4>
         <p>
           <i class="fa fa-exclamation fa-2x"></i>

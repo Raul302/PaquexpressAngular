@@ -137,9 +137,10 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
-                  <i class="nav-icon "></i>
-                  <p>Tipos de pago</p>
+                <a class="nav-link" [routerLink]="['TiposEnvio']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}" >
+                  <i class="nav-icon fas fa-shipping-fast"></i>
+                  <p>Tipos de Envio</p>
                 </a>
               </li>
 

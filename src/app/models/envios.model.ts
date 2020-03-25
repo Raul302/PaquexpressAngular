@@ -4,5 +4,5 @@ export class EnviosModel {
   id_Producto: number;
   id_transporte: number;
   id_Ciudad: number;
-  id_Pago: number;
+  id_TipoEnvio: number;
 }

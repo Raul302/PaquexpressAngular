@@ -20,6 +20,10 @@ import { EnviosDetalleComponent } from './Envios/envios-detalle/envios-detalle.c
 import { TransportesDetalleComponent } from './Transportes/transportes-detalle/transportes-detalle.component';
 import { ProductosDetalleComponent } from './Productos/productos-detalle/productos-detalle.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { TipoEnviosComponent } from './tipo-envios/tipo-envios.component';
+import { TipoEnviosDetalleComponent } from './tipo-envios-detalle/tipo-envios-detalle.component';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { CategoriasDetalleComponent } from './categorias-detalle/categorias-detalle.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,11 @@ import { NotfoundComponent } from './notfound/notfound.component';
     EnviosDetalleComponent,
     TransportesDetalleComponent,
     ProductosDetalleComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    TipoEnviosComponent,
+    TipoEnviosDetalleComponent,
+    CategoriasComponent,
+    CategoriasDetalleComponent
   ],
   imports: [
     BrowserModule,
