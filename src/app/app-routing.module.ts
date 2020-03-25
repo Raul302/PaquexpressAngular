@@ -19,7 +19,7 @@ import { CategoriasDetalleComponent } from './categorias-detalle/categorias-deta
 import { TipoEnviosComponent } from './tipo-envios/tipo-envios.component';
 import { TipoEnviosDetalleComponent } from './tipo-envios-detalle/tipo-envios-detalle.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './guards/test.guard';
 import { Auth0Guard } from './guards/auth0.guard';
 
 // login Google
@@ -55,31 +55,31 @@ import { Auth0Guard } from './guards/auth0.guard';
 
 // // login Auth0
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'usuarios', component: UsuariosComponent },
-  { path: 'usuario/:id', component: UsuarioComponent },
+  { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
+  { path: 'usuario/:id', component: UsuarioComponent, canActivate: [AuthGuard] },
 
-  { path: 'ciudades', component: CiudadesComponent },
-  { path: 'ciudades/:id', component: CiudadesDetalleComponent },
+  { path: 'ciudades', component: CiudadesComponent, canActivate: [AuthGuard] },
+  { path: 'ciudades/:id', component: CiudadesDetalleComponent, canActivate: [AuthGuard] },
 
-  { path: 'envios', component: EnviosComponent },
-  { path: 'envios/:id', component: EnviosDetalleComponent },
+  { path: 'envios', component: EnviosComponent, canActivate: [AuthGuard] },
+  { path: 'envios/:id', component: EnviosDetalleComponent, canActivate: [AuthGuard] },
 
-  { path: 'productos', component: ProductosComponent },
-  { path: 'productos/:id', component: ProductosDetalleComponent },
+  { path: 'productos', component: ProductosComponent, canActivate: [AuthGuard] },
+  { path: 'productos/:id', component: ProductosDetalleComponent, canActivate: [AuthGuard] },
 
-  { path: 'transportes', component: TransportesComponent },
-  { path: 'transportes/:id', component: TransportesDetalleComponent },
+  { path: 'transportes', component: TransportesComponent, canActivate: [AuthGuard] },
+  { path: 'transportes/:id', component: TransportesDetalleComponent, canActivate: [AuthGuard] },
 
-  { path: 'vendedores', component: VendedoresComponent },
-  { path: 'vendedores/:id', component: VendedoresDetalleComponent },
+  { path: 'vendedores', component: VendedoresComponent, canActivate: [AuthGuard] },
+  { path: 'vendedores/:id', component: VendedoresDetalleComponent, canActivate: [AuthGuard] },
 
-  { path: 'categorias', component: CategoriasComponent },
-  { path: 'categorias/:id', component: CategoriasDetalleComponent },
+  { path: 'categorias', component: CategoriasComponent, canActivate: [AuthGuard] },
+  { path: 'categorias/:id', component: CategoriasDetalleComponent, canActivate: [AuthGuard] },
 
-  { path: 'TiposEnvio', component: TipoEnviosComponent },
-  { path: 'TiposEnvio/:id', component: TipoEnviosDetalleComponent },
+  { path: 'TiposEnvio', component: TipoEnviosComponent, canActivate: [AuthGuard] },
+  { path: 'TiposEnvio/:id', component: TipoEnviosDetalleComponent, canActivate: [AuthGuard] },
 
   { path: '**', component: NotfoundComponent }
 ];
