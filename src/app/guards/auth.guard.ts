@@ -49,11 +49,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (next.data.route == 'dashboard') {
+    if (next.data.route === 'dashboard') {
       return this.dashboardGuard();
     }
 
-    if (next.data.route == 'auth') {
+    if (next.data.route === 'auth') {
       return this.authGuard();
     }
   }

@@ -12,7 +12,7 @@ import { Auth0Service } from './services/auth0.service';
 export class AppComponent {
   title = 'PaquexpressAngular';
   user: SocialUser;
-  loggedIn: boolean
+  loggedIn: boolean;
   constructor(
     private authService: AuthService,
     private router: Router,

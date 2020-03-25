@@ -29,7 +29,7 @@ export class EnviosDetalleComponent implements OnInit {
   tenvios: TipoEnvioModel[] = [];
   title: string;
 
-  constructor(private envioservice: EnviosService,    private route: ActivatedRoute , private router: Router) { }
+  constructor(  private envioservice: EnviosService,    private route: ActivatedRoute , private router: Router) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -113,7 +113,7 @@ export class EnviosDetalleComponent implements OnInit {
           'Actualizado Correctamente',
           'success');
       });
-          this.router.navigate(['/envios']);
+    this.router.navigate(['/envios']);
     }
     else
     {
@@ -123,7 +123,7 @@ export class EnviosDetalleComponent implements OnInit {
             this.showMessage(this.envio.id,
               'Creado Correctamente',
               'success');
-                        // this.router.navigate(['/envios']);
+              this.router.navigate(['/envios']);
 
           }, error =>{
             this.showMessage('Ocurrio un error',

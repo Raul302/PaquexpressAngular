@@ -3,7 +3,7 @@ import { UsuarioModel } from '../models/usuario.model';
 import { NgForm } from '@angular/forms';
 import { UsuariosService } from '../services/usuarios.service';
 import Swal from 'sweetalert2';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Button } from 'protractor';
 import { Observable } from 'rxjs';
 
@@ -20,7 +20,8 @@ export class UsuarioComponent implements OnInit {
   usuario = new UsuarioModel();
   title: string;
 
-  constructor(private usuarioService: UsuariosService,
+  constructor(private router: Router
+    ,private usuarioService: UsuariosService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -52,7 +53,8 @@ export class UsuarioComponent implements OnInit {
   {
 
     if ( form.invalid ) {
-      console.log('Formulario no válido');
+      this.showMessage('Formulario no valido',
+      'Datos faltantes o no validos','info');
       return;
     }
     Swal.fire({
@@ -74,6 +76,7 @@ export class UsuarioComponent implements OnInit {
         this.showMessage(this.usuario.email,
           'Actualizado Correctamente',
           'success');
+          this.router.navigate(['usuarios']);
       });
     }
     else
@@ -85,6 +88,8 @@ export class UsuarioComponent implements OnInit {
             this.showMessage(this.usuario.username,
               'Creado Correctamente',
               'success');
+              this.router.navigate(['usuarios']);
+
           }, error =>{
             console.log(error.error.message);
             this.showMessage('Ocurrio un error',

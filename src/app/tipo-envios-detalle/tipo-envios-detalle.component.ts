@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TipoEnvioModel } from '../models/TipoEnvio.model';
 import { TipoenvioService } from '../services/tipoenvio.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
@@ -18,7 +18,7 @@ export class TipoEnviosDetalleComponent implements OnInit {
   tenvios = new TipoEnvioModel();
   title: string;
 
-  constructor(private tenvioservice: TipoenvioService,private route: ActivatedRoute) { }
+  constructor(private router: Router ,private tenvioservice: TipoenvioService,private route: ActivatedRoute) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -74,6 +74,7 @@ export class TipoEnviosDetalleComponent implements OnInit {
       this.showMessage(this.tenvios.Nombre,
         'Actualizado Correctamente',
         'success');
+        this.router.navigate(['TiposEnvio'])
       });
     }
     else
@@ -85,6 +86,8 @@ export class TipoEnviosDetalleComponent implements OnInit {
             this.showMessage(this.tenvios.Nombre,
               'Creada Correctamente',
               'success');
+              this.router.navigate(['TiposEnvio'])
+
           }, error =>{
             console.log(error.error.message);
             this.showMessage('Ocurrio un error',

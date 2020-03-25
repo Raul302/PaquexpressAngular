@@ -53,9 +53,9 @@ import { Auth0Guard } from './guards/auth0.guard';
 //   { path: '**', component: NotfoundComponent }
 // ];
 
-// login Auth0
+// // login Auth0
 const routes: Routes = [
-  { path: '', canActivate: [Auth0Guard], component: DashboardComponent },
+  { path: '', component: DashboardComponent, canActivate: [Auth0Guard] },
   { path: 'login', component: LoginComponent },
   { path: 'usuarios', component: UsuariosComponent, canActivate: [Auth0Guard] },
   { path: 'usuario/:id', component: UsuarioComponent, canActivate: [Auth0Guard] },

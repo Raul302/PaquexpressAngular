@@ -27,6 +27,8 @@ import { TipoEnviosDetalleComponent } from './tipo-envios-detalle/tipo-envios-de
 import { CategoriasComponent } from './categorias/categorias.component';
 import { CategoriasDetalleComponent } from './categorias-detalle/categorias-detalle.component';
 import { LoginComponent } from './login/login.component';
+import { CategoriasModule } from './categorias/categorias.module';
+import { CategoriasDetalleModule } from './categorias-detalle/categorias-detalle/categorias-detalle.module';
 
 const config = new AuthServiceConfig([
   {
@@ -67,7 +69,8 @@ export function provideConfig() {
     SocialLoginModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    CategoriasModule,
+    CategoriasDetalleModule
   ],
   providers: [{
     provide: AuthServiceConfig,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosModel } from 'src/app/models/productos.model';
 import { ProductosService } from 'src/app/services/productos.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
@@ -19,7 +19,8 @@ export class ProductosDetalleComponent implements OnInit {
   producto = new ProductosModel();
   title: string;
 
-  constructor(private productoservice: ProductosService,private route: ActivatedRoute) { }
+  constructor(private router: Router
+    ,private productoservice: ProductosService,private route: ActivatedRoute) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -47,7 +48,8 @@ export class ProductosDetalleComponent implements OnInit {
   {
 
     if ( form.invalid ) {
-      console.log('Formulario no válido');
+      this.showMessage('Formulario no valido',
+      'Datos faltantes o no validos','info');
       return;
     }
     Swal.fire({
@@ -69,6 +71,7 @@ export class ProductosDetalleComponent implements OnInit {
         this.showMessage(this.producto.Nombre,
           'Actualizado Correctamente',
           'success');
+          this.router.navigate(['productos']);
       });
     }
     else
@@ -80,6 +83,7 @@ export class ProductosDetalleComponent implements OnInit {
             this.showMessage(this.producto.Nombre,
               'Creado Correctamente',
               'success');
+              this.router.navigate(['productos']);
           }, error =>{
             console.log(error.error.message);
             this.showMessage('Ocurrio un error',
