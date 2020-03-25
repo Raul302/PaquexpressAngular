@@ -23,8 +23,8 @@ import { Auth0Guard } from './guards/auth0.guard';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent, canActivate: [AuthGuard], data: { route: 'dashboard' } },
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuard], data: { route: 'auth' } },
+  { path: '', component: DashboardComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'usuarios', component: UsuariosComponent },
   { path: 'usuario/:id', component: UsuarioComponent },
 

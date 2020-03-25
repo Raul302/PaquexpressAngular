@@ -31,7 +31,7 @@ import { LoginComponent } from './login/login.component';
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider('754026727561-p3lr98t7rgrj6mttae4du8c0g5lma2rg.apps.googleusercontent.com')
+    provider: new GoogleLoginProvider('754026727561-4dah7601atqm36e2p8sn8fkq8ge4rcu7.apps.googleusercontent.com')
   }
 ]);
 
