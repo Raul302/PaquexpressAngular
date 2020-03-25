@@ -18,29 +18,19 @@
             <p class="login-box-msg">Sign in to start your session</p>
 
 
-            <div class="input-group mb-3">
-              <input type="email" class="form-control" placeholder="Email">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
-                </div>
+            <form class="user">
+              <div class="form-group">
+                <input type="email" class="form-control form-control-user" id="inputEmail" aria-describedby="emailHelp"
+                  placeholder="Email">
               </div>
-            </div>
-            <div class="input-group mb-3">
-              <input type="password" class="form-control" placeholder="Password">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-lock"></span>
-                </div>
+              <div class="form-group">
+                <input type="password" class="form-control form-control-user" id="inputPassword" placeholder="Password">
               </div>
-            </div>
-            <div class="row justify-content-center">
-              <!-- /.col -->
-              <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-              </div>
-              <!-- /.col -->
-            </div>
+              <!-- falta accion de login -->
+              <input value="Login" type="submit" class="btn btn-dark bg-darkgray btn-user btn-block">
+
+              <hr>
+            </form>
 
             <div class="social-auth-links text-center mb-3">
               <p>- OR -</p>

@@ -21,14 +21,11 @@
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item active">
 
-        <a *ngIf="!user || Profile " class="nav-link btn btn-primary" routerLink="/login">Login<span
+        <a *ngIf="!user" class="nav-link btn btn-primary" routerLink="/login">Login<span
             class="sr-only">(current)</span></a>
         <a *ngIf="loggedIn" class="btn btn-primary text-white" (click)="signOut()">Logout Google</a>
         <a *ngIf="auth0.userProfile$ | async as profile" class="btn btn-primary text-white"
           (click)="auth0.logout()">Logout Auth0</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/registro">Registro</a>
       </li>
     </ul>
   </nav>

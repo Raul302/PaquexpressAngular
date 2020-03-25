@@ -16,7 +16,7 @@ export class AppComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    public auth0: Auth0Service
+    public auth0: Auth0Service,
   ) { }
 
   ngOnInit(): void {
