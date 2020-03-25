@@ -23,7 +23,7 @@ export class VendedoresComponent implements OnInit {
   console.log('Componente montado');
   this.vendedorservice.MostrarVendedores().subscribe(
     (resp: any) =>  {
-    // console.log(resp);
+     console.log(resp);
     this.vendedores = resp.vendedor;
     this.producto = resp.producto;
     this.cargando = false;
