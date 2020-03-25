@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   vendedores = new vendedorModel();
   ciudades = new CiudadModel();
   usuarios = new UsuarioModel();
-  constructor(private envioservice:EnviosService) { }
+  constructor(private envioservice: EnviosService) { }
 
   ngOnInit() {
 
