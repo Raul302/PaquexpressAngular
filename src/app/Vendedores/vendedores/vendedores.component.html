@@ -7,7 +7,8 @@
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a [routerLink]="['/']" routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">Home</a></li>
           <li class="breadcrumb-item active">Vendedores</li>
         </ol>
       </div><!-- /.col -->
@@ -19,8 +20,8 @@
 <div class="col-12">
   <div class="card">
     <div class="card-header">
-      <button  routerLink="/vendedores/nuevo"
-      class="btn btn-success"><i class="fa fa-plus"></i> <i class="fa fa-chart-line"></i> </button>
+      <button routerLink="/vendedores/nuevo" class="btn btn-success"><i class="fa fa-plus"></i> <i
+          class="fa fa-chart-line"></i> </button>
       <div class="card-tools">
         <div class="input-group input-group-sm" style="width: 150px;">
           <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -33,9 +34,8 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive p-0">
-      <table
-      *ngIf="!cargando && vendedores.length > 0"
-      class="table table-hover animated fadeIn faster animated fadeIn faster ">
+      <table *ngIf="!cargando && vendedores.length > 0"
+        class="table table-hover animated fadeIn faster animated fadeIn faster ">
         <thead>
           <tr>
             <th>ID</th>
@@ -56,19 +56,17 @@
             <td>{{vendedor.id_Producto}}</td>
             <td>{{vendedor.created_at}}</td>
             <td>
-              <button type="submit"
-              class="btn btn-outline-info"
-              [routerLink]="['/vendedores',vendedor.id]">
-              <i class="fa fa-edit" ></i>Editar</button>
-              <button (click)="borrarProducto(vendedor , i)"
-              class="btn btn-outline-danger">
-              <i class="fa fa-trash" ></i>Borrar</button>
+              <button type="submit" class="btn btn-outline-info" [routerLink]="['/vendedores',vendedor.id]">
+                <i class="fa fa-edit"></i>Editar</button>
+              <button (click)="borrarProducto(vendedor , i)" class="btn btn-outline-danger">
+                <i class="fa fa-trash"></i>Borrar</button>
             </td>
           </tr>
         </tbody>
       </table>
 
-      <div *ngIf="!cargando && vendedores.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+      <div *ngIf="!cargando && vendedores.length === 0"
+        class="alert alert-warning text-center mt-3 animated fadeIn faster">
         <h4 class="alert-heading">No hay registros</h4>
         <p>
           <i class="fa fa-exclamation fa-2x"></i>
